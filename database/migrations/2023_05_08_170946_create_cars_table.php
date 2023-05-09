@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cars', function (Blueprint $table) {
-            $table->bigIncrements('carId');
+            $table->id();
             $table->string('name');
             $table->string('carType');
-            $table->float('rating');
+            $table->string('rating');
             $table->string('fuel');
             $table->string('image');
-            $table->float('hourRate');
-            $table->float('dayRate');
-            $table->float('monthRate');
+            $table->string('hourRate');
+            $table->string('dayRate');
+            $table->string('monthRate');
             $table->timestamps();
         });
     }

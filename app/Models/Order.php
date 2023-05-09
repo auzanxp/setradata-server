@@ -9,7 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'orderId';
+    protected $table = 'orders';
 
     protected $fillable = [
         'pickUpLoc',
@@ -21,19 +21,16 @@ class Order extends Model
         'userId',
         'adminId',
     ];
-
-    public function car()
-    {
-        return $this->belongsTo(Car::class);
+    
+    public function user() {
+        return $this->belongsTo(User::class, 'userId');
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    public function admin() {
+        return $this->belongsTo(Admin::class, 'adminId');
     }
 
-    public function admin()
-    {
-        return $this->belongsTo(Admin::class);
+    public function car() {
+        return $this->belongsTo(Car::class, 'id');
     }
 }

@@ -14,20 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->bigIncrements('orderId');
+            $table->id();
             $table->string('pickUpLoc');
             $table->string('dropOffLoc');
             $table->date('pickUpDate');
             $table->date('dropOffDate');
             $table->time('pickUpTime');
-            $table->unsignedBigInteger('carId');
-            $table->unsignedBigInteger('userId');
-            $table->unsignedBigInteger('adminId')->nullable();
+            $table->integer('carId');
+            $table->integer('userId');
+            $table->integer('adminId');
             $table->timestamps();
-        
-            $table->foreign('carId')->references('carId')->on('cars');
-            $table->foreign('userId')->references('userid')->on('users');
-            $table->foreign('adminId')->references('adminId')->on('admins');
         });
     }
 

@@ -9,9 +9,14 @@ class Admin extends Model
 {
     use HasFactory;
 
+    protected $table = 'admins';
+
     protected $fillable = [
-        'id',
         'email',
         'password',
     ];
+
+    public function order() {
+        return $this->hasMany(Order::class, 'adminId', 'id');
+    }
 }

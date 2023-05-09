@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     use HasFactory;
-    
-    protected $primaryKey = 'carId';
+
+    protected $table = 'cars';
 
     protected $fillable = [
         'name',
@@ -21,4 +21,8 @@ class Car extends Model
         'dayRate',
         'monthRate',
     ];
+
+    public function order() {
+        return $this->hasMany(Order::class, 'carId','id');
+    }
 }
